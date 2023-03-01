@@ -68,8 +68,8 @@ public class ContractRepositoryImpl implements ContractRepository {
         while (nbOfElems + newContracts.length > contracts.length) {
             this.contracts = Arrays.copyOf(this.contracts, (this.contracts.length * 3) / 2 + 1);
         }
-        for (int i = startIndex, k = 0; i < newContracts.length; i++) {
-            newContracts[k].setId(((long) i));
+        for (int i = startIndex, k = 0; k < newContracts.length; i++) {
+            newContracts[k].setId(i);
             this.contracts[i] = newContracts[k];
             k++;
             nbOfElems++;

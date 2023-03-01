@@ -1,6 +1,7 @@
 package repository;
 
 
+
 import model.*;
 
 import java.time.LocalDate;
@@ -26,8 +27,13 @@ public class ContractRepositoryImplTest {
     @org.junit.Test
     public void addContracts() {
         ContractRepositoryImpl repo = new ContractRepositoryImpl();
-        repo.addContracts(new Contract[]{mcc,dtvc,ic,mcc,dtvc,ic});
+        repo.addContracts(new Contract[]{mcc,dtvc,ic});
+        assertEquals(4,repo.getLength());
+        System.out.println(repo);
+        repo.addContracts(new Contract[]{mcc1,dtvc1,ic1});
         assertEquals(7,repo.getLength());
+        System.out.println(repo);
+
     }
 
     @org.junit.Test
@@ -55,8 +61,7 @@ public class ContractRepositoryImplTest {
         ContractRepositoryImpl repo = new ContractRepositoryImpl();
         Contract[] contracts3 = new Contract[]{mcc,mcc1,mcc2,dtvc,dtvc1,dtvc2,ic,ic1,ic2};
         repo.addContracts(contracts3);
-        System.out.println(repo);
-        Contract result = repo.findContractById(12L);
+        assertNull(repo.findContractById(12L));
     }
 
     @org.junit.Test
@@ -65,8 +70,5 @@ public class ContractRepositoryImplTest {
         Contract[] contracts3 = new Contract[]{mcc,mcc1,mcc2,dtvc,dtvc1,dtvc2,ic,ic1,ic2};
         repo.addContracts(contracts3);
         System.out.println(repo);
-        Contract result = repo.findContractById(12L);
     }
-
-
 }
