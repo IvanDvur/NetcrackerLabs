@@ -1,6 +1,8 @@
 package Exceptions;
 
-public class NoElementWithSuchIdException extends Exception {
+import java.io.IOException;
+
+public class NoElementWithSuchIdException extends IOException {
 
     public void printExeption() {
         System.out.println("Контракт с указанным ID не найден");
