@@ -6,14 +6,26 @@ import java.time.Period;
 
 
 public class Person {
-
+    /**
+     * Id человека, автоматически присваиваемое значение
+     */
     private Long id;
-
+    /**
+     * Поле «ФИО»
+     */
     private String fullname;
+    /**
+     * Поле «Дата рождения»
+     */
     private LocalDate birthday;
 
+    /**
+     * Поле «Серия и номер паспорта»
+     */
     private String passportNumber;
-
+    /**
+     * Поле «Возраст», вычисляется при инициализации объекта
+     */
     private int age;
 
     public Person(String fullname, LocalDate birthday, String passportNumber) {
@@ -27,7 +39,7 @@ public class Person {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -18,42 +18,40 @@ public class ContractRepositoryImplTest {
     Contract mcc1 = new MobileCommunicationContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),101L,person2,500,200,1000);
     Contract mcc2 = new MobileCommunicationContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),102L,person3,500,200,1000);
     Contract dtvc = new DigitalTVContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),200L,person, ChannelPack.ECONOMY);
-    Contract dtvc1 = new DigitalTVContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),201L,person2, ChannelPack.ECONOMY);
-    Contract dtvc2 = new DigitalTVContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),202L,person3, ChannelPack.ECONOMY);
+    Contract dtvc1 = new DigitalTVContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),201L,person2, ChannelPack.PREMIUM);
+    Contract dtvc2 = new DigitalTVContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),202L,person3, ChannelPack.STANDARD);
     Contract ic = new InternetContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),300L,person, 100);
-    Contract ic1 = new InternetContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),301L,person2, 100);
-    Contract ic2 = new InternetContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),302L,person3, 100);
-
+    Contract ic1 = new InternetContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),301L,person2, 75);
+    Contract ic2 = new InternetContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),302L,person3, 50);
+    ContractRepository repo = new ContractRepositoryImpl();
     @org.junit.Test
     public void addContracts() {
-        ContractRepositoryImpl repo = new ContractRepositoryImpl();
         repo.addContracts(new Contract[]{mcc,dtvc,ic});
         assertEquals(4,repo.getLength());
-        System.out.println(repo);
+        assertEquals(3,repo.getNbOfElems());
         repo.addContracts(new Contract[]{mcc1,dtvc1,ic1});
         assertEquals(7,repo.getLength());
-        System.out.println(repo);
-
+        assertEquals(6,repo.getNbOfElems());
+        repo.addContracts(new Contract[]{mcc2,dtvc2,ic2});
+        assertEquals(11,repo.getLength());
+        assertEquals(9,repo.getNbOfElems());
     }
 
     @org.junit.Test
     public void addContractsWithEnsuredCapacity() {
-        ContractRepositoryImpl repo = new ContractRepositoryImpl(5);
+        ContractRepositoryImpl repo1 = new ContractRepositoryImpl(5);
         Contract[] contracts2 = new Contract[]{mcc,dtvc,ic,mcc,dtvc,ic,mcc};
-        repo.addContracts(contracts2);
-        assertEquals(8,repo.getLength());
+        repo1.addContracts(contracts2);
+        assertEquals(8,repo1.getLength());
     }
 
 
     @org.junit.Test
     public void findContractById() {
-        ContractRepositoryImpl repo = new ContractRepositoryImpl();
-        Contract[] contracts3 = new Contract[]{mcc,mcc1,mcc2,dtvc,dtvc1,dtvc2,ic,ic1,ic2};
-        repo.addContracts(contracts3);
-        System.out.println(repo);
-        Contract result = repo.findContractById(7L);
-        assertEquals(Long.valueOf(7),result.getId());
-        assertEquals("Петров Пётр Петрович",result.getPerson().getFullname());
+        addContracts();
+        assertEquals(Long.valueOf(8),repo.findContractById(8L).getId());
+        assertEquals("0010257454",repo.findContractById(1L).getPerson().getPassportNumber());
+        assertEquals(Long.valueOf(201),repo.findContractById(4L).getContractNumber());
     }
 
     @org.junit.Test
@@ -66,9 +64,9 @@ public class ContractRepositoryImplTest {
 
     @org.junit.Test
     public void deleteContractById() {
-        ContractRepositoryImpl repo = new ContractRepositoryImpl();
-        Contract[] contracts3 = new Contract[]{mcc,mcc1,mcc2,dtvc,dtvc1,dtvc2,ic,ic1,ic2};
-        repo.addContracts(contracts3);
-        System.out.println(repo);
+        addContracts();
+        repo.deleteContractById(4L);
+        assertEquals(8,repo.getNbOfElems());
+        assertNull(repo.findContractById(4L));
     }
 }

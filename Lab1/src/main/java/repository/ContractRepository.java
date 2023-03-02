@@ -1,15 +1,17 @@
 package repository;
 
-import Exceptions.NoElementWithSuchIdException;
 import model.Contract;
 
 public interface ContractRepository {
 
-    Contract findContractById(Long id) throws NoElementWithSuchIdException;
+    Contract findContractById(Long id);
 
-    boolean deleteContractById(Long id) throws NoElementWithSuchIdException;
+    boolean deleteContractById(Long id);
 
     void addContracts(Contract[] contracts);
 
+    long getLength();
+
+    long getNbOfElems();
 
 }

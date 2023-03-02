@@ -4,7 +4,9 @@ package model;
 import java.time.LocalDate;
 
 public class InternetContract extends Contract {
-
+    /**
+     * Поле «Скорость подключения»
+     */
     private int connectionSpeed;
 
     public InternetContract(LocalDate startDate, LocalDate endDate, Long contractNumber, Person person, int connectionSpeed) {

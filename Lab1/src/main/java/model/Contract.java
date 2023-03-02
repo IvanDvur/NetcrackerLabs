@@ -3,19 +3,42 @@ package model;
 
 import java.time.LocalDate;
 
-
+/**
+ * Родительский класс Contract, содержащий общую информацию о контракте, присущую всем типам контрактов
+ */
 public class Contract {
-
+    /**
+     * Id контракта, автоматически присваивается при добавлении в репозиторий
+     */
     private Long id;
 
+    /**
+     * Дата начала контракта
+     */
     private LocalDate startDate;
 
+    /**
+     * Дата окончания контракта
+     */
     private LocalDate endDate;
 
+    /**
+     * Номер контракта
+     */
     private Long contractNumber;
 
+    /**
+     * Сущность "Человек", привязанная к контракту
+     */
     private Person person;
 
+    /**
+     * Конструктор с требуемыми параметрами
+     * @param startDate дата начала контракта
+     * @param endDate дата окончания контракта
+     * @param contractNumber номер контракта
+     * @param person сущность «Человек»
+     */
     public Contract(LocalDate startDate, LocalDate endDate, Long contractNumber, Person person) {
         this.startDate = startDate;
         this.endDate = endDate;

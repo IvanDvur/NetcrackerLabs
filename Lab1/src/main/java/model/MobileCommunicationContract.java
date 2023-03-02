@@ -5,8 +5,17 @@ import java.time.LocalDate;
 
 public class MobileCommunicationContract extends Contract {
 
+    /**
+     * Поле «Кол-во минут»
+     */
     private Integer quantityOfMins;
+    /**
+     * Поле «Кол-во гигабайт»
+     */
     private Integer quantityOfGb;
+    /**
+     * Поле «Кол-во смс»
+     */
     private Integer quantityOfSms;
 
     public MobileCommunicationContract(LocalDate startDate, LocalDate endDate,
