@@ -20,6 +20,8 @@ public class ContractRepositoryImpl implements ContractRepository {
      */
     private int nbOfElems;
 
+    private int currentId;
+
     /**
      * Конструктор без параметров, при вызове, поле contracts инициализируется пустым массивом, кол-во эелементов(nbOfElems) также равно 0
      */
@@ -34,8 +36,9 @@ public class ContractRepositoryImpl implements ContractRepository {
      * @param initialCapacity первоначальная ёмкость массива
      */
     public ContractRepositoryImpl(int initialCapacity) {
-        contracts = new Contract[initialCapacity];
+        this.contracts = new Contract[initialCapacity];
         this.nbOfElems = 0;
+        this.currentId = 0;
     }
 
     /**
@@ -54,9 +57,10 @@ public class ContractRepositoryImpl implements ContractRepository {
             this.contracts = Arrays.copyOf(this.contracts, (this.contracts.length * 3) / 2 + 1);
         }
         for (int i = startIndex, k = 0; k < newContracts.length; i++) {
-            newContracts[k].setId(i);
-            newContracts[k].getPerson().setId(i);
+            newContracts[k].setId(currentId);
+            newContracts[k].getPerson().setId(currentId);
             this.contracts[i] = newContracts[k];
+            currentId++;
             k++;
             nbOfElems++;
         }
