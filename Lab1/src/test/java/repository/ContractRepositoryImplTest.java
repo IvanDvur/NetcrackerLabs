@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
 
 public class ContractRepositoryImplTest {
 
-    Person person = new Person("Двуреченский Иван Сергеевич", LocalDate.of(2000, Month.JULY,9),"0010257454");
-    Person person2 = new Person("Петров Пётр Петрович", LocalDate.of(2001, Month.AUGUST,15),"4220442454");
-    Person person3 = new Person("Иванов Иван Иванович", LocalDate.of(2002, Month.AUGUST,15),"4220442454");
+    Person person = new Person("Двуреченский Иван Сергеевич", LocalDate.of(2000, Month.JULY,9),"0010257454",true);
+    Person person2 = new Person("Петров Пётр Петрович", LocalDate.of(2001, Month.AUGUST,15),"4220442454",true);
+    Person person3 = new Person("Иванов Иван Иванович", LocalDate.of(2002, Month.AUGUST,15),"4220442454",true);
     Contract mcc = new MobileCommunicationContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),100L,person,500,200,1000);
     Contract mcc1 = new MobileCommunicationContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),101L,person2,500,200,1000);
     Contract mcc2 = new MobileCommunicationContract(LocalDate.now(),LocalDate.of(2027, Month.AUGUST,23),102L,person3,500,200,1000);

@@ -22,6 +22,7 @@ public class Contract {
      */
     private LocalDate endDate;
 
+
     /**
      * Номер контракта
      */
@@ -32,18 +33,23 @@ public class Contract {
      */
     private Person person;
 
+
     /**
      * Конструктор с требуемыми параметрами
-     * @param startDate дата начала контракта
-     * @param endDate дата окончания контракта
+     *
+     * @param startDate      дата начала контракта
+     * @param endDate        дата окончания контракта
      * @param contractNumber номер контракта
-     * @param person сущность «Человек»
+     * @param person         сущность «Человек»
      */
     public Contract(LocalDate startDate, LocalDate endDate, Long contractNumber, Person person) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.contractNumber = contractNumber;
         this.person = person;
+    }
+
+    public Contract() {
     }
 
     public Long getId() {

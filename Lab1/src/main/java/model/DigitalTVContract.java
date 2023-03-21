@@ -8,6 +8,11 @@ public class DigitalTVContract extends Contract {
      */
     private ChannelPack channelPack;
 
+
+    public DigitalTVContract(ChannelPack channelPack){
+        this.channelPack = channelPack;
+    }
+
     /**
      * Конструктор с требуемыми параметрами, вызывающий родительский конструктор
      * @param startDate дата начала контракта
@@ -20,6 +25,8 @@ public class DigitalTVContract extends Contract {
         super(startDate, endDate, contractNumber, person);
         this.channelPack = channelPack;
     }
+
+
 
     public void setChannelPack(ChannelPack channelPack) {
         this.channelPack = channelPack;

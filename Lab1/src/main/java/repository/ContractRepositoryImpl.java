@@ -13,14 +13,14 @@ public class ContractRepositoryImpl implements ContractRepository {
     /**
      * Поле-массив выполняющее функции репозитория и хранящее в себе элементы-наследники класса Contract
      */
-    private Contract[] contracts;
+    protected Contract[] contracts;
 
     /**
      * Поле хранящее количество элементов в репозитории
      */
-    private int nbOfElems;
+    protected int nbOfElems;
 
-    private int currentId;
+    protected int currentId;
 
     /**
      * Конструктор без параметров, при вызове, поле contracts инициализируется пустым массивом, кол-во эелементов(nbOfElems) также равно 0

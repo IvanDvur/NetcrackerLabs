@@ -18,6 +18,12 @@ public class MobileCommunicationContract extends Contract {
      */
     private Integer quantityOfSms;
 
+    public MobileCommunicationContract(Integer quantityOfMins, Integer quantityOfGb, Integer quantityOfSms) {
+        this.quantityOfMins = quantityOfMins;
+        this.quantityOfGb = quantityOfGb;
+        this.quantityOfSms = quantityOfSms;
+    }
+
     public MobileCommunicationContract(LocalDate startDate, LocalDate endDate,
                                        Long contractNumber, Person person, Integer quantityOfMins,
                                        Integer quantityOfGb, Integer quantityOfSms) {

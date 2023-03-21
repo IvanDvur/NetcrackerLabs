@@ -9,6 +9,10 @@ public class InternetContract extends Contract {
      */
     private int connectionSpeed;
 
+    public InternetContract(int connectionSpeed) {
+        this.connectionSpeed = connectionSpeed;
+    }
+
     public InternetContract(LocalDate startDate, LocalDate endDate, Long contractNumber, Person person, int connectionSpeed) {
         super(startDate, endDate, contractNumber, person);
         this.connectionSpeed = connectionSpeed;
